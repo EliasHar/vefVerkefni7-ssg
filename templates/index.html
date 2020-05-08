@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,600,600i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <title>My Recipes</title>
+</head>
+<body class="container">
+    <header class="headcol-2">
+        <div>
+            <a href="index.html">
+                <img src="img/my-recipes.svg">
+            </a>
+        </div>
+        <nav class="topnav">
+            <input type="checkbox" id="toggle" class="menuInput">
+            <label for="toggle" class="menuLabel"><img src="img/bar.svg"></label>
+            <ul class="topmenu">
+                <li><a href="bread.html"><span class="icon-bread"></span> Bread</a></li>
+                <li><a href="#"><span class="icon-starters"></span> Starters</a></li>
+                <li><a href="#"><span class="icon-maincourses"></span> Main Courses</a></li>
+                <li><a href="#"> <span class="icon-desserts"></span> Desserts</a></li>
+                <li><a href="#"><span class="icon-glass"></span> Drinks</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <div class="auglysing">
+                {% include "auglysing.html" %}
+            <div>
+        </section>
+        <section>
+            <div>
+                {% include "tafla.html" %}
+            </div>
+        </section>
+        <div>
+            <figure class="col-4"> 
+                <img src="img/front/bread.jpg" title="bread">
+                <img src="img/front/FigHamStarter.jpg" title="starters">
+                <img src="img/front/Grilled-Buttermilk-Chicken.jpg" title="courses">
+                <img src="img/front/desserts-hero.jpg" title="desserts">
+            </figure>
+        </div>
+    </main>
+    <footer><p>&copy; 2020 Elías Andri - Tölvubraut Tækniskólans</p></footer>
+    {% include "socialButts.html" %}
+</body>
+</html>
+{# jinja birtir ekkert innan #}
+{#
+{% raw %}  RAW gerir jinja kóðann óvirkan en birtir html
+{% extends "frontpage.html" %}
+    {% block content %}
+    <main class="col-3">
+    {% for post in posts %}
+        <div class="stretch">
+            <article class="card">
+                <header>
+                    <img src="{{ post.thumbnail }}">
+                </header>
+                <main>
+                    <h2>{{ post.title }}</h2>
+                    <small>{{ post.date }}</small>
+                    <p>{{ post.summary}}</p>
+                    
+                    <a class="mybutt" href="posts/{{ post.slug }}.html">Recipe</a>
+                    
+                    {% set list_of_tags = post.tags.split(",") %}
+                    {% for tag in list_of_tags %}
+                        <button class="mytag">{{ tag }}</button>
+                    {% endfor %}
+                </main>
+            </article>
+        </div>
+    {% endfor %}
+    </main>
+    {% endblock %}
+{% endraw %}
+#}
